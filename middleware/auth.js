@@ -1,7 +1,7 @@
 import jwt, { verify } from 'jsonwebtoken'
 
 import dotenv from 'dotenv';
-dotenv.config();
+dotenv.config(); 
 
 const auth = (req, res, next) => {
     try {
