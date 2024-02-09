@@ -52,7 +52,7 @@ await Payment.create({
 })
           
 res.redirect('/')
-    // res.redirect(`https://65c260cc96121e0e7beb7a48--stack-overflow-premium.netlify.app/paymentsuccess?reference=${razorpay_payment_id}`);
+    res.redirect(`https://stack-overflow-premium.netlify.app/paymentsuccess?reference=${razorpay_payment_id}`);
 }else{
   
     res.status(400).json({
