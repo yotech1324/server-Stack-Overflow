@@ -4,15 +4,17 @@ import { Payment } from '../models/payment.js'
 
 var name = 0;
 var userId = 0;
+var orderAmount = 0;
 export const checkout = async (req, res) => {
 
     const options = {
         amount: Number(req.body.amount * 100),
         currency: "INR",
-        notes: [req.body.name, req.body.userId]
+        notes: [req.body.name,req.body.amount, req.body.userId]
     };
  name = req.body.name;
 userId = req.body.userId;
+    orderAmount = req.body.amount;
 console.log(name)
 // const User_paying = localStorage.setItem({name:req.body.name,userId:req.body.userId})
 // localStorage.setItem('User_paying', JSON.stringify( req.body ))
@@ -49,10 +51,11 @@ await Payment.create({
      razorpay_signature,
      User_name:name,
      userId:userId,
+    orderAmount:orderAmount,
 })
           
 res.redirect('/')
-    res.redirect(`http://localhost:3000/paymentsuccess?reference=${razorpay_payment_id}`);
+    res.redirect(`https://stack-overflow-clone-2.netlify.app/paymentsuccess?reference=${razorpay_payment_id}`);
 }else{
   
     res.status(400).json({
