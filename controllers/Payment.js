@@ -15,7 +15,7 @@ export const checkout = async (req, res) => {
  name = req.body.name;
 userId = req.body.userId;
     orderAmount = req.body.amount;
-console.log(name)
+// console.log(name)
 // const User_paying = localStorage.setItem({name:req.body.name,userId:req.body.userId})
 // localStorage.setItem('User_paying', JSON.stringify( req.body ))
 // localStorage.setItem('User_paying', JSON.stringify(req.body));
@@ -34,7 +34,7 @@ console.log(order)
 export const paymentVerification = async (req, res) => {
     
     const { razorpay_order_id, razorpay_payment_id, razorpay_signature } = req.body;
-console.log(req.body.name)
+// console.log(req.body.name)
 
     const body = razorpay_order_id + "|" + razorpay_payment_id;
 
@@ -54,7 +54,7 @@ await Payment.create({
     orderAmount:orderAmount,
 })
           
-res.redirect('/')
+// res.redirect('/')
     res.redirect(`https://stack-overflow-clone-2.netlify.app/paymentsuccess?reference=${razorpay_payment_id}`);
 }else{
   
